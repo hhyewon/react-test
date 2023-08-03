@@ -45,17 +45,21 @@ class ClassComp extends React.Component {
     }
 }
 
-
 // hook >> function 방식에서 class를 사용할 수 있게 됨.
 function HookComp(props) {
-    var numberState = useState();
-    console.log(numberState)
-
+    var numberState = useState(props.initNumber);
+    var number = numberState[0];
+    var setNumber = numberState[1];
 
     return (
         <div className="container">
-            <h2>function style component</h2>
-            <p>Number : {props.initNumber}</p>
+            <h2>hook style component</h2>
+            <p>Number : {number}</p>
+            <input type="button" value="random" onClick={
+                function () {
+                    setNumber(Math.random());
+                }
+            }/>
         </div>
     );
 }
